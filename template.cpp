@@ -29,14 +29,15 @@ int readFiles(const string &directory)
 			// imprime el nombre del archivo
 			cout << entry.path().filename().string() << endl;
 
-			/*
-
-				 READ FILE WORD BY WORD
-
-				 while(file >> word) {
-							ADD YOUR CODE
-				 }
-			*/
+			// lee cada palabra del archivo (INCLUYENDO)
+			int wordCount = 0;
+			string word;
+			while (file >> word)
+			{
+				// no lee los 'whitespace' de por si
+				wordCount++;
+			}
+			cout << wordCount << endl;
 		}
 	}
 	// returns the amount of files in that folder
