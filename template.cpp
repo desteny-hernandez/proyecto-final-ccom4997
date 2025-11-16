@@ -27,17 +27,13 @@ int readFiles(const string &directory)
 			counter++;
 
 			// imprime el nombre del archivo
-			cout << entry.path().filename().string() << endl;
+			// entry.path().filename().string()
 
-			// lee cada palabra del archivo (INCLUYENDO)
-			int wordCount = 0;
 			string word;
 			while (file >> word)
 			{
 				// no lee los 'whitespace' de por si
-				wordCount++;
 			}
-			cout << wordCount << endl;
 		}
 	}
 	// returns the amount of files in that folder
@@ -48,8 +44,11 @@ int main()
 {
 
 	// How you send the file name dependes of where your executable file is
-	int amount_of_files = readFiles("baby-dataset-flowers/");
-	cout << "The amount of files in directory is: " << amount_of_files << "\n";
+	int baby_dataset = readFiles("baby-dataset-flowers/");
+	cout << "The amount of files in baby dataset is: " << baby_dataset << "\n";
+
+	int movies_dataset = readFiles("moviesdb/");
+	cout << "The amount of files in moviesdb is: " << movies_dataset << "\n";
 
 	return 0;
 }
