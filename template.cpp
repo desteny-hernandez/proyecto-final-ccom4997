@@ -141,7 +141,7 @@ public:
 		}
 	}
 
-	// ask for word and database?
+	// ask for word and database to search in....?
 	void menu()
 	{
 		cout << endl;
@@ -161,6 +161,8 @@ public:
 		cout << " ---`-'                     '--'         :  \\  \\ " << endl;
 		cout << "                                          \\  ' ; " << endl;
 		cout << "                                           `--`  " << endl;
+		cout << endl;
+		cout << "Escriba la"
 	}
 };
 
@@ -173,7 +175,7 @@ int main()
 	plants.search("flowers", true);
 	plants.search("and", true);
 
-	plants.menu();
+	// plants.menu();
 
 	return 0;
 }
