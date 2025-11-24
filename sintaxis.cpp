@@ -24,19 +24,5 @@ int main()
 	cout << test.first << endl;
 	cout << test.second << endl;
 
-		// con un for loop
-
-	// for (auto &i : index)
-	// {
-	// 	cout << i.first << endl;
-	// 	i.second.push_back({1, 5});
-	// 	for (auto &i2 : i.second)
-	// 	{
-	// 		cout << "multimap llave: " << i2.first << endl;
-	// 		cout << "multimap valor: " << i2.second << endl;
-	// 		cout << endl;
-	// 	}
-	// }
-
 	return 0;
 }
