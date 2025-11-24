@@ -7,16 +7,24 @@ using namespace std;
 
 int main()
 {
-	map<string, vector<pair<int, int>>> index;
+	//
+	// vector de pairs: recurrencia, frecuencia
+	map<string, vector<pair<string, int>>> index;
 	index["cat"];
 	index["ball"];
 	index["meow"];
 
-	index["cat"].push_back({1, 50});
+	index["cat"].push_back({"meow.txt", 50});
 	cout << index["cat"][0].first << endl;
 	cout << index["cat"][0].second << endl;
 
-  // con un for loop
+	pair<string, int> test;
+	test.second++;
+	test.first = "meow";
+	cout << test.first << endl;
+	cout << test.second << endl;
+
+		// con un for loop
 
 	// for (auto &i : index)
 	// {
