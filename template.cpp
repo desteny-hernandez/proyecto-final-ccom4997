@@ -140,6 +140,28 @@ public:
 			cout << endl;
 		}
 	}
+
+	// ask for word and database?
+	void menu()
+	{
+		cout << endl;
+		cout << "Bienvenido al motor de búsqueda...." << endl;
+
+		cout << "  ,--,                            ,-.            " << endl;
+		cout << ",--.'|                        ,--/ /|            " << endl;
+		cout << "|  | :     ,---.     ,---.  ,--. :/ |            " << endl;
+		cout << ":  : '    '   ,'\\   '   ,'\\ :  : ' /             " << endl;
+		cout << "|  ' |   /   /   | /   /   ||  '  /        .--,  " << endl;
+		cout << "'  | |  .   ; ,. :.   ; ,. :'  |  :      /_ ./|  " << endl;
+		cout << "|  | :  '   | |: :'   | |: :|  |   \\  , ' , ' :  " << endl;
+		cout << "'  : |__'   | .; :'   | .; :'  : |. \\/___/ \\: |  " << endl;
+		cout << "|  | '.'|   :    ||   :    ||  | ' \\ \\.  \\  ' |  " << endl;
+		cout << ";  :    ;\\   \\  /  \\   \\  / '  : |--'  \\  ;   :  " << endl;
+		cout << "|  ,   /  `----'    `----'  ;  |,'      \\  \\  ;  " << endl;
+		cout << " ---`-'                     '--'         :  \\  \\ " << endl;
+		cout << "                                          \\  ' ; " << endl;
+		cout << "                                           `--`  " << endl;
+	}
 };
 
 int main()
@@ -150,6 +172,8 @@ int main()
 	plants.getFilesAmount();
 	plants.search("flowers", true);
 	plants.search("and", true);
+
+	plants.menu();
 
 	return 0;
 }
