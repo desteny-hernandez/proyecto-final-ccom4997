@@ -162,18 +162,18 @@ public:
 		cout << "                                          \\  ' ; " << endl;
 		cout << "                                           `--`  " << endl;
 		cout << endl;
-		cout << "Escriba la"
+		cout << "Escriba la";
 	}
 };
 
 int main()
 {
-	// InvertedIndex movies("moviesdb/");
-	InvertedIndex plants("baby-dataset-flowers/");
+	InvertedIndex movies("moviesdb/");
+	// InvertedIndex plants("baby-dataset-flowers/");
 
-	plants.getFilesAmount();
-	plants.search("flowers", true);
-	plants.search("and", true);
+	movies.getFilesAmount();
+	cout << "size del inverted_index: " << movies.size() << endl;
+	movies.search("flower");
 
 	// plants.menu();
 
