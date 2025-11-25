@@ -44,7 +44,20 @@ public:
 	// uso: imprime el size del inverted index;
 	int size() const
 	{
-		return indexSize; // guarda la cantidad de palabras que se encuantra en el inverted_inde
+		return indexSize; // guarda la cantidad de palabras que se encuantra en el inverted_index
+	}
+
+	// use: iterate through the string and create a new string without the commas or periods
+	
+	string rebuild (string key) {
+		string res;
+		for (char c: key) {
+			if (c != ',' && c != ';' && c != '.' && c != '(' && c != ')' && c != ':' && c != '!' && c != '?' 
+				&& c != '[' && c != ']' && c != '{' && c != '}') {
+        		res += c;
+        	}
+    	}
+		return res;
 	}
 
 	// uso: itera por todos los archivos del folder y guarda todas las palabras encontradas en ellas en el inverted_index
@@ -66,7 +79,8 @@ public:
 				string word;
 				while (file >> word)
 				{
-					inverted_index[word][entry.path().filename().string()]++;
+					string new_word = rebuild(word);
+					inverted_index[new_word][entry.path().filename().string()]++;
 				}
 				countFiles++; // incrementa el contador de files
 			}
@@ -162,20 +176,30 @@ public:
 		cout << "                                          \\  ' ; " << endl;
 		cout << "                                           `--`  " << endl;
 		cout << endl;
-		cout << "Escriba la";
+		cout << "Escriba la palabra a buscar!\n";
 	}
 };
 
 int main()
 {
-	InvertedIndex movies("moviesdb/");
-	// InvertedIndex plants("baby-dataset-flowers/");
+	
+	// InvertedIndex movies("moviesdb/");
+	InvertedIndex plants("baby-dataset-flowers/");
+	
+	plants.menu();
 
-	movies.getFilesAmount();
-	cout << "size del inverted_index: " << movies.size() << endl;
-	movies.search("flower");
+	// movies.menu();
 
-	// plants.menu();
+	// movies.getFilesAmount();
+	
+	// cout << "size del inverted_index: " << movies.size() << endl;
+	// movies.search("flower");
+
+	plants.getFilesAmount();
+	cout << "size del inverted_index: " << plants.size() << endl;
+	plants.search("flower");
+
+	
 
 	return 0;
 }
