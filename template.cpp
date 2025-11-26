@@ -288,6 +288,7 @@ public:
 		cout << " ---`-'                     '--'         :  \\  \\ " << endl;
 		cout << "                                          \\  ' ; " << endl;
 		cout << "                                           `--`  " << endl;
+		cout << "Escriba la palabra a buscar!\n";
 		cout << endl;
 	}
 
