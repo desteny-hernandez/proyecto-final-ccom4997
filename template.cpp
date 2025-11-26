@@ -49,7 +49,6 @@ public:
 	}
 
 	// use: iterate through the string and create a new string without the commas or periods
-
 	string rebuild(string key)
 	{
 		string res;
