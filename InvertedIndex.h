@@ -16,36 +16,26 @@ private:
 	int countFiles; // cantidad de files leidos
 	int indexSize;	// cantidad de palabras guardadas en el inverted_index
 
-public:
-	InvertedIndex()
+	// prints out the logo of looky
+	void welcomeScreen()
 	{
-		countFiles = -1;
-	}
-
-	// le puedes dar al constructor
-	InvertedIndex(const string &directory)
-	{
-		readFiles(directory);
-		indexSize = inverted_index.size(); // guarda la cantidad de palabras que se encuantra en el inverted_inde
-	}
-
-	// uso: imprime cuantos archivos ha leido para el inverted index
-	void getFilesAmount() const
-	{
-		if (countFiles == -1)
-		{
-			cout << "No se ha leido ningún archivo ヽ(*。>Д<)o゜" << endl;
-		}
-		else
-		{
-			cout << "Se ha leido un total de " << countFiles << " archivos." << endl;
-		}
-	}
-
-	// uso: imprime el size del inverted index;
-	int size() const
-	{
-		return indexSize; // guarda la cantidad de palabras que se encuantra en el inverted_inde
+		cout << endl;
+		cout << "Bienvenido al motor de búsqueda...." << endl;
+		cout << "  ,--,                            ,-.            " << endl;
+		cout << ",--.'|                        ,--/ /|            " << endl;
+		cout << "|  | :     ,---.     ,---.  ,--. :/ |            " << endl;
+		cout << ":  : '    '   ,'\\   '   ,'\\ :  : ' /             " << endl;
+		cout << "|  ' |   /   /   | /   /   ||  '  /        .--,  " << endl;
+		cout << "'  | |  .   ; ,. :.   ; ,. :'  |  :      /_ ./|  " << endl;
+		cout << "|  | :  '   | |: :'   | |: :|  |   \\  , ' , ' :  " << endl;
+		cout << "'  : |__'   | .; :'   | .; :'  : |. \\/___/ \\: |  " << endl;
+		cout << "|  | '.'|   :    ||   :    ||  | ' \\ \\.  \\  ' |  " << endl;
+		cout << ";  :    ;\\   \\  /  \\   \\  / '  : |--'  \\  ;   :  " << endl;
+		cout << "|  ,   /  `----'    `----'  ;  |,'      \\  \\  ;  " << endl;
+		cout << " ---`-'                     '--'         :  \\  \\ " << endl;
+		cout << "                                          \\  ' ; " << endl;
+		cout << "                                           `--`  " << endl;
+		cout << "Creando inverted index... espere unos segundos..." << endl;
 	}
 
 	// uso: itera por todos los archivos del folder y guarda todas las palabras encontradas en ellas en el inverted_index
@@ -74,8 +64,8 @@ public:
 		}
 	}
 
-	// uso: busca "word" adentro del inverted_index
-	// input: word := palabra que se va a buscar
+	// uso: busca una sola palabra "word" adentro del inverted_index
+	// input: string que se va a utilizar
 	void singleSearch(const string &word) const
 	{
 		cout << "\nBuscando \"" << word << "\" en el inverted index..." << endl;
@@ -114,6 +104,8 @@ public:
 		}
 	}
 
+	// uso: search utilizado si tiene dos palabras
+	// input: 2 strings
 	void doubleSearch(const string &word1, const string &word2) const
 	{
 		cout << "\nBuscando \"" << word1 << "\" y \"" << word2 << "\" en el inverted index..." << endl;
@@ -168,26 +160,6 @@ public:
 		{
 			cout << "\t" << ++contador << ". " << it->second << " | cantidad: " << it->first << endl;
 			it++; // se mueve al proximo nodo
-		}
-	}
-
-	// uso: imprime el inverted index creado
-	void display()
-	{
-		// imprime el inverted index
-		for (auto &i : inverted_index)
-		{
-			// llave: palabra encontrada | valor: nodo de un map
-			cout << "palabra: \"" << i.first << "\"" << endl;
-
-			// para accesar el nombre del documento y la frecuencia de esa palabra, se itera por el valor de cada palabra
-			int k = 0;
-			for (auto &j : i.second)
-			{
-				// llave: documento | valor: frecuencia en ese documento
-				cout << "\t" << ++k << ". nombre del documento: " << j.first << " | frecuencia: " << j.second << endl;
-			}
-			cout << endl;
 		}
 	}
 
@@ -254,28 +226,6 @@ public:
 		}
 	}
 
-	// prints out the logo of looky
-	void welcomeScreen()
-	{
-		cout << endl;
-		cout << "Bienvenido al motor de búsqueda...." << endl;
-		cout << "  ,--,                            ,-.            " << endl;
-		cout << ",--.'|                        ,--/ /|            " << endl;
-		cout << "|  | :     ,---.     ,---.  ,--. :/ |            " << endl;
-		cout << ":  : '    '   ,'\\   '   ,'\\ :  : ' /             " << endl;
-		cout << "|  ' |   /   /   | /   /   ||  '  /        .--,  " << endl;
-		cout << "'  | |  .   ; ,. :.   ; ,. :'  |  :      /_ ./|  " << endl;
-		cout << "|  | :  '   | |: :'   | |: :|  |   \\  , ' , ' :  " << endl;
-		cout << "'  : |__'   | .; :'   | .; :'  : |. \\/___/ \\: |  " << endl;
-		cout << "|  | '.'|   :    ||   :    ||  | ' \\ \\.  \\  ' |  " << endl;
-		cout << ";  :    ;\\   \\  /  \\   \\  / '  : |--'  \\  ;   :  " << endl;
-		cout << "|  ,   /  `----'    `----'  ;  |,'      \\  \\  ;  " << endl;
-		cout << " ---`-'                     '--'         :  \\  \\ " << endl;
-		cout << "                                          \\  ' ; " << endl;
-		cout << "                                           `--`  " << endl;
-		cout << endl;
-	}
-
 	// uso: crea una pausa para que el usuario presione [ENTER] antes de continuar
 	void enterPrompt()
 	{
@@ -283,14 +233,70 @@ public:
 		char space;
 		cin.get(space); //  espera a que el usuario precione [ENTER] para continuar
 	}
-};
 
-int main()
-{
-	InvertedIndex movies("moviesdb/");
-	movies.welcomeScreen();
-	movies.getSearchWord();
-	movies.enterPrompt();
-	movies.menuLoop();
-	return 0;
-}
+public:
+	InvertedIndex()
+	{
+		// si se declara un inverted index sin un directorio, la cantidad de files leidos es -1
+		countFiles = -1;
+		// cantidad de palabras en el inverted index
+		indexSize = -1;
+	}
+
+	// le puedes dar al constructor un directorio
+	InvertedIndex(const string &directory)
+	{
+		welcomeScreen();
+		readFiles(directory);
+		indexSize = inverted_index.size(); // guarda la cantidad de palabras que se encuantra en el inverted_index
+	}
+
+	// invoca todas las funciones necesarias para desplegar el search al terminal
+	void search()
+	{
+		getSearchWord();
+		enterPrompt();
+		menuLoop();
+	}
+
+	// uso: imprime cuantos archivos ha leido para el inverted index
+	void getFilesAmount() const
+	{
+		if (countFiles == -1)
+		{
+			cout << "No se ha dado un directorio para leer sus archivos ヽ(*。>Д<)o゜" << endl;
+		}
+		else
+		{
+			cout << "Se ha leido un total de " << countFiles << " archivos." << endl;
+		}
+	}
+
+	// uso: imprime el size del inverted index;
+	int size() const
+	{
+		return indexSize; // guarda la cantidad de palabras que se encuantra en el inverted_inde
+	}
+
+	// uso: imprime el inverted index creado
+	void display()
+	{
+		if (indexSize == -1 || indexSize == 0)
+			cout << "el inverted index no tiene ninguna palabra" << endl;
+		else
+			// imprime el inverted index
+			for (auto &i : inverted_index)
+			{
+				// llave: palabra encontrada | valor: nodo de un map
+				cout << "palabra: \"" << i.first << "\"" << endl;
+				// para accesar el nombre del documento y la frecuencia de esa palabra, se itera por el valor de cada palabra
+				int k = 0;
+				for (auto &j : i.second)
+				{
+					// llave: documento | valor: frecuencia en ese documento
+					cout << "\t" << ++k << ". nombre del documento: " << j.first << " | frecuencia: " << j.second << endl;
+				}
+				cout << endl;
+			}
+	}
+};
