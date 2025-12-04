@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/inverted.dir/main.cpp.o -o inverted 

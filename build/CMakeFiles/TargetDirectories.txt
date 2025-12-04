@@ -1,0 +1,3 @@
+/workspaces/proyecto-final-ccom4997/build/CMakeFiles/inverted.dir
+/workspaces/proyecto-final-ccom4997/build/CMakeFiles/edit_cache.dir
+/workspaces/proyecto-final-ccom4997/build/CMakeFiles/rebuild_cache.dir
