@@ -193,7 +193,7 @@ private:
 				cout << "Adiós!" << endl;
 				break;
 			default:
-				cout << "Selección errónea. Intente de nuevo!" << endl;
+				cout << "Selección errónea. ¡Intente de nuevo!" << endl;
 				break;
 			}
 		} while (selection != 1 && selection != 2);
