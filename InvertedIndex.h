@@ -168,8 +168,10 @@ private:
 	void menuLoop()
 	{
 		int selection;
+		bool invalid_input; // flag por si en input no es invalido
 		do
 		{
+			invalid_input = false; // se actualiza en cada ciclo
 			cout << "\nDesea buscar de nuevo?" << endl;
 			cout << "\t1. Si." << endl;
 			cout << "\t2. No." << endl;
@@ -178,25 +180,28 @@ private:
 			cin >> selection;
 			cin.get(space); //  atrapa el [enter] cuando seleciona el número
 
-			// en los casos que alguien se ponga gracioso e intente de escribir letras 
-			if (cin.fail()) {
-                cin.clear(); // clear error flags
-                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discarding invalid input
+			// // en los casos que alguien se ponga gracioso e intente de escribir letras
+			if (cin.fail())
+			{
+				cin.clear();																									 // clear error flags
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discarding invalid input
 			}
 
 			switch (selection)
 			{
 			case 1:
 				getSearchWord();
+				enterPrompt();
 				break;
 			case 2:
 				cout << "Adiós!" << endl;
 				break;
 			default:
 				cout << "Selección errónea. ¡Intente de nuevo!" << endl;
+				invalid_input = true;
 				break;
 			}
-		} while (selection != 1 && selection != 2);
+		} while (selection == 1 || invalid_input);
 	}
 
 	// uso: toma de input la busqueda
