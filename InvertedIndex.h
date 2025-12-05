@@ -122,7 +122,7 @@ private:
 			return; // se sale de la busqueda
 		}
 
-		unordered_map<string, int> docsWord1;		 // se crea un unordered_map que guarda en cuales documentos se encuantra word1
+		unordered_map<string, int> docsWord1;		 // se crea un map que guarda en cuales documentos se encuantra word1
 		for (auto &i : inverted_index.at(word1)) // iteramos por el valor de la llave "word1" del inverted_index
 			docsWord1.insert({i.first, i.second});
 
@@ -176,19 +176,26 @@ private:
 			char space;
 			cin >> selection;
 			cin.get(space); //  atrapa el [enter] cuando seleciona el número
+
+			// en los casos que alguien se ponga gracioso e intente de escribir letras 
+			if (cin.fail()) {
+                cin.clear(); // clear error flags
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // discarding invalid input
+			}
+
 			switch (selection)
 			{
 			case 1:
 				getSearchWord();
 				break;
 			case 2:
-				cout << "Adios!" << endl;
+				cout << "Adiós!" << endl;
 				break;
 			default:
-				cout << "Selección erronea. Intente denuevo!" << endl;
+				cout << "Selección errónea. Intente de nuevo!" << endl;
 				break;
 			}
-		} while (selection == 1);
+		} while (selection != 1 && selection != 2);
 	}
 
 	// uso: toma de input la busqueda
@@ -268,7 +275,7 @@ public:
 		}
 		else
 		{
-			cout << "Se ha leido un total de " << countFiles << " archivos." << endl;
+			cout << "Se ha leído un total de " << countFiles << " archivos." << endl;
 		}
 	}
 
@@ -282,7 +289,7 @@ public:
 	void display()
 	{
 		if (indexSize == -1 || indexSize == 0)
-			cout << "el inverted index no tiene ninguna palabra" << endl;
+			cout << "El inverted index no tiene ninguna palabra" << endl;
 		else
 			// imprime el inverted index
 			for (auto &i : inverted_index)
